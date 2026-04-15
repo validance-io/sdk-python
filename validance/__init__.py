@@ -4,7 +4,7 @@ This is the ONLY module that workflow definitions should import.
 All workflow interactions with the Validance engine pass through this
 interface.  Engine internals are not exposed.
 
-    from validance.sdk import Task, Workflow
+    from validance import Task, Workflow
 
 Contract versioning (semver):
     Patch  — bug fixes, no behavioral change, no revalidation.
@@ -23,8 +23,8 @@ __contract_version__ = "2.0.0"
 #REVIEW: the engine module (`from workflow import Task, Workflow`),
 #REVIEW: which gave them access to engine internals (DB, Docker, etc.).
 #REVIEW: This boundary mitigates Risk R-010 (contract interface not enforced).
-from validance.sdk.task import Task, deep_freeze
-from validance.sdk.workflow import Workflow
+from validance.task import Task, deep_freeze
+from validance.workflow import Workflow
 
 
 __all__ = [

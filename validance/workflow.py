@@ -10,7 +10,7 @@ import hashlib
 import json
 from typing import Dict, List, Optional
 
-from validance.sdk.task import Task
+from validance.task import Task
 
 
 #REVIEW: The engine's original Workflow class (workflow.py:3330) mixed
@@ -32,7 +32,7 @@ class Workflow:
 
     Example::
 
-        from validance.sdk import Task, Workflow
+        from validance import Task, Workflow
 
         def create_workflow():
             wf = Workflow("rag_chat")
@@ -81,7 +81,7 @@ class Workflow:
         """Add a task to the workflow.  Returns *self* for chaining.
 
         Raises:
-            TypeError:  If *task* is not a :class:`validance.sdk.Task`.
+            TypeError:  If *task* is not a :class:`validance.Task`.
             ValueError: If a task with the same name already exists.
         """
         #REVIEW: isinstance check enforces that only SDK Task objects can be
@@ -91,7 +91,7 @@ class Workflow:
         #REVIEW: Mitigates Risk R-010 (contract boundary enforcement).
         if not isinstance(task, Task):
             raise TypeError(
-                f"Expected validance.sdk.Task, got {type(task).__name__}. "
+                f"Expected validance.Task, got {type(task).__name__}. "
                 f"Workflow tasks must be declared with the SDK."
             )
         if task.name in self._tasks:

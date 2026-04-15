@@ -29,11 +29,10 @@ Homepage = "https://validance.io"
 Repository = "https://github.com/validance-io/sdk"
 
 [tool.setuptools.dynamic]
-version = {attr = "validance.sdk.__contract_version__"}
+version = {attr = "validance.__contract_version__"}
 
 [tool.setuptools.packages.find]
-include = ["validance.sdk*"]
-namespaces = true
+include = ["validance*"]
 
 [tool.setuptools.package-data]
-"validance.sdk" = ["py.typed"]
+"validance" = ["py.typed"]

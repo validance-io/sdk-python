@@ -7,7 +7,7 @@ The SDK defines two primitives: **Task** (a unit of work) and **Workflow** (a DA
 Multi-workflow orchestration (sequencing, branching, process state) is handled by the caller via the engine HTTP API. See [orchestration patterns](docs/orchestration-patterns.md).
 
 ```python
-from validance.sdk import Task, Workflow
+from validance import Task, Workflow
 ```
 
 ---
@@ -25,7 +25,7 @@ Requires Python 3.9+. No dependencies.
 ## Quick Start
 
 ```python
-from validance.sdk import Task, Workflow
+from validance import Task, Workflow
 
 # Define tasks
 extract = Task(
@@ -75,7 +75,7 @@ curl -X POST http://engine:8001/api/workflows/data.pipeline/trigger
 A `Task` is the smallest unit of work — a shell command that runs inside an isolated Docker container.
 
 ```python
-from validance.sdk import Task
+from validance import Task
 
 analysis = Task(
     name="run_analysis",
@@ -227,7 +227,7 @@ task.to_dict()   # JSON-safe dict (omits fields matching defaults)
 A `Workflow` is a directed acyclic graph (DAG) of tasks.
 
 ```python
-from validance.sdk import Task, Workflow
+from validance import Task, Workflow
 
 wf = Workflow("data.pipeline")
 wf.add_task(extract)
@@ -313,7 +313,7 @@ Recursively makes a JSON-like structure immutable:
 - Primitives (`str`, `int`, `float`, `bool`, `None`) are already immutable
 
 ```python
-from validance.sdk import deep_freeze
+from validance import deep_freeze
 
 context = {"scores": [0.9, 0.8], "meta": {"version": 1}}
 frozen = deep_freeze(context)
@@ -330,7 +330,7 @@ Used by the engine to protect context passed to branch decision functions.
 ## Contract Versioning
 
 ```python
-from validance.sdk import __contract_version__
+from validance import __contract_version__
 print(__contract_version__)  # "2.0.0"
 ```
 
