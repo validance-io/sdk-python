@@ -56,16 +56,16 @@ assert not errors, errors
 print(wf.to_json(indent=2))
 ```
 
-Register and trigger via the engine's REST API:
+Register and trigger via the engine's REST API ([interactive docs](https://api.validance.io/docs)):
 
 ```bash
 # Register
-curl -X POST http://engine:8001/api/workflows \
+curl -X POST https://api.validance.io/api/workflows \
   -H "Content-Type: application/json" \
   -d @workflow.json
 
 # Trigger
-curl -X POST http://engine:8001/api/workflows/data.pipeline/trigger
+curl -X POST https://api.validance.io/api/workflows/data.pipeline/trigger
 ```
 
 ---
@@ -147,7 +147,7 @@ analyze = Task(
 Trigger with a file parameter:
 
 ```bash
-curl -X POST http://engine:8001/api/workflows/data.pipeline/trigger \
+curl -X POST https://api.validance.io/api/workflows/data.pipeline/trigger \
   -H "Content-Type: application/json" \
   -d '{"parameters": {"source": "azure://data/samples/experiment_42.csv"}}'
 ```
