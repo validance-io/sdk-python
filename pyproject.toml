@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "validance-sdk"
+dynamic = ["version"]
+description = "Contract interface for Validance validated workflow orchestration"
+requires-python = ">=3.9"
+license = "Apache-2.0"
+authors = [{name = "Validance"}]
+readme = "README.md"
+keywords = ["workflow", "orchestration", "validation", "dag", "audit"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Typing :: Typed",
+    "Topic :: Software Development :: Libraries",
+]
+
+[project.urls]
+Homepage = "https://validance.io"
+Repository = "https://github.com/validance-io/sdk"
+
+[tool.setuptools.dynamic]
+version = {attr = "validance.sdk.__contract_version__"}
+
+[tool.setuptools.packages.find]
+include = ["validance.sdk*"]
+namespaces = true
+
+[tool.setuptools.package-data]
+"validance.sdk" = ["py.typed"]
